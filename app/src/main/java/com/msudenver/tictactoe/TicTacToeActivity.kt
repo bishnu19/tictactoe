@@ -7,6 +7,7 @@ package com.msudenver.tictactoe
  * Description: App 01 - TicTacToe Activity class
  */
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
@@ -17,15 +18,37 @@ class TicTacToeActivity : AppCompatActivity(),View.OnClickListener {
 
     // TODO (suggested): maintain a reference to a TicTacToe object
 
+
+    var ticTacToe: TicTacToe? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tictactoe)
 
-        // TODO (suggested): get the player's name, symbol, and the first move choice from the activity's intent; use them to instantiate a TicTacToe game; decide whether the computer should play based on the first move choice
+        /* TODO (suggested): get the player's name, symbol, and the first move choice from the
+            activity's intent; use them to instantiate a TicTacToe game; decide whether the computer
+             should play based on the first move choice
+         */
+        //val intent = getIntent()
+
+        val name = intent.getStringExtra("playerName")
+        val symbol = intent.getCharExtra("playerSymbol", 0.toChar())
+        val firstMove = intent.getBooleanExtra("firstMove",true)
+
+        //ticTacToe = TicTacToe?()
+
+
 
         // TODO (suggested): get a reference to the TextView "player info" area; update the TextView with the player's name and symbol
+        val textView: TextView = findViewById(R.id.txtView)
+        //val info = textView.text.toString()
+        textView.text = "Player " + name + " is using the symbol " + symbol
 
-        // TODO (suggested): using a loop and button tags, update their texts and "onClick" listeners to TicTacToeActivity; remember to disable the button if it corresponds to a computer's first move
+        /* TODO (suggested): using a loop and button tags, update their texts and "onClick"
+            listeners to TicTacToeActivity; remember to disable the button if it corresponds to a
+             computer's first move
+
+         */
         // hint: use "findViewWithTag"
 
     }
@@ -34,7 +57,15 @@ class TicTacToeActivity : AppCompatActivity(),View.OnClickListener {
     fun showResults() {
     }
 
-    // TODO (suggested): cast the given view as a Button; disable the button so you don't forget; get the button's tag and use it to infer the player's move coordinates; make the move and update the button's text with the player's symbol; if the game is over, show results; otherwise, have the computer play; use TitTacToe's last move and "findViewWithTag" to get a reference to the button of the computer's play; disable the button so you don't forget; update the button's text with the computer's symbol; if the game is over, show results
+    /* TODO (suggested): cast the given view as a Button; disable the button so you don't forget;
+         get the button's tag and use it to infer the player's move coordinates; make the move and
+          update the button's text with the player's symbol; if the game is over, show results;
+           otherwise, have the computer play; use TitTacToe's last move and "findViewWithTag" to get
+            a reference to the button of the computer's play; disable the button so you don't
+            forget; update the button's text with the computer's symbol; if the game is over,
+            show results
+
+     */
     override fun onClick(view: View?) {
 
     }
