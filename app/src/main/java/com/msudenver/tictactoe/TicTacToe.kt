@@ -3,7 +3,7 @@ package com.msudenver.tictactoe
 /*
  * CS3013 - Mobile App Dev. - Summer 2022
  * Instructor: Thyago Mota
- * Student(s):
+ * Student(s): Adam Prieto and Bishnu Bhusal
  * Description: App 01 - TicTacToe Model class
  */
 
@@ -180,25 +180,325 @@ class TicTacToe(playerName: String, playerSymbol: Char = NOUGHTS): Serializable 
         return if (playerSymbol === NOUGHTS) CROSSES else NOUGHTS
     }
 
-    // TODO (required): modify this method to incorporate some (not purely random) strategy
+    // TODOd (required): modify this method to incorporate some (not purely random) strategy
     /**
      * Allow the computer to play a random move (no AI this time)
      * @return true/false depending on whether the move was possible
      */
-    fun computerPlay(): Boolean {
-        if (canMove()) {
-            while (true) {
+    // computerPlay method with strategy implemented
+    fun computerPlay(): Boolean
+    {
+        // If the computer can make a move, do one of the following...
+        if (canMove())
+        {
+            // 1.) Get center square first if available.
+            if (board[1][1] == BLANK)
+            {
+                board[1][1] = getComputerSymbol()
+                lastMove = Pair(1,1)
+                return true
+            } // End if
+
+            // Begin strategy (the difficult stuff)
+
+            // 2.) If a win presents itself, take it.
+            else if (board[0][0] == board[0][1] && board[0][1] == getComputerSymbol() && board[0][2] == BLANK)
+            {
+                board[0][2] = getComputerSymbol()
+                lastMove = Pair(0,2)
+                return true
+            } // End else if
+            else if (board[0][0] == board[0][2] && board[0][0] == getComputerSymbol() && board[0][1] == BLANK)
+            {
+                board[0][1] = getComputerSymbol()
+                lastMove = Pair(0,1)
+                return true
+            } // End else if
+            else if (board[0][1] == board[0][2] && board[0][1] == getComputerSymbol() && board[0][0] == BLANK)
+            {
+                board[0][0] = getComputerSymbol()
+                lastMove = Pair(0,0)
+                return true
+            } // End else if
+            else if (board[1][0] == board[1][1] && board[1][0] == getComputerSymbol() && board[1][2] == BLANK)
+            {
+                board[1][2] = getComputerSymbol()
+                lastMove = Pair(1,2)
+                return true
+            } // End else if
+            else if (board[1][1] == board[1][2] && board[1][1] == getComputerSymbol() && board[1][0] == BLANK)
+            {
+                board[1][0] = getComputerSymbol()
+                lastMove = Pair(1,0)
+                return true
+            } // End else if
+            else if (board[1][0] == board[1][2] && board[1][0] == getComputerSymbol() && board[1][1] == BLANK)
+            {
+                board[1][1] = getComputerSymbol()
+                lastMove = Pair(1,1)
+                return true
+            } // End else if
+            else if (board[2][0] == board[2][1] && board[2][1] == getComputerSymbol() && board[2][2] == BLANK)
+            {
+                board[2][2] = getComputerSymbol()
+                lastMove = Pair(2,2)
+                return true
+            } // End else if
+            else if (board[2][1] == board[2][2] && board[2][1] == getComputerSymbol() && board[2][0] == BLANK)
+            {
+                board[2][0] = getComputerSymbol()
+                lastMove = Pair(2,0)
+                return true
+            } // End else if
+            else if (board[2][0] == board[2][2] && board[2][2] == getComputerSymbol() && board[2][1] == BLANK)
+            {
+                board[2][1] = getComputerSymbol()
+                lastMove = Pair(2,1)
+                return true
+            } // End else if
+            else if (board[0][0] == board[1][0] && board[1][0] == getComputerSymbol() && board[2][0] == BLANK)
+            {
+                board[2][0] = getComputerSymbol()
+                lastMove = Pair(2,0)
+                return true
+            } // End else if
+            else if (board[1][0] == board[2][0] && board[2][0] == getComputerSymbol() && board[0][0] == BLANK)
+            {
+                board[0][0] = getComputerSymbol()
+                lastMove = Pair(0,0)
+                return true
+            } // End else if
+            else if (board[0][0] == board[2][0] && board[2][0] == getComputerSymbol() && board[1][0] == BLANK)
+            {
+                board[1][0] = getComputerSymbol()
+                lastMove = Pair(1,0)
+                return true
+            } // End else if
+            else if (board[0][1] == board[1][1] && board[1][1] == getComputerSymbol() && board[2][1] == BLANK)
+            {
+                board[2][1] = getComputerSymbol()
+                lastMove = Pair(2,1)
+                return true
+            } // End else if
+            else if (board[1][1] == board[2][1] && board[2][1] == getComputerSymbol() && board[0][1] == BLANK)
+            {
+                board[0][1] = getComputerSymbol()
+                lastMove = Pair(0,1)
+                return true
+            } // End else if
+            else if (board[0][2] == board[1][2] && board[1][2] == getComputerSymbol() && board[2][2] == BLANK)
+            {
+                board[2][2] = getComputerSymbol()
+                lastMove = Pair(2,2)
+                return true
+            } // End else if
+            else if (board[1][2] == board[2][2] && board[2][2] == getComputerSymbol() && board[0][2] == BLANK)
+            {
+                board[0][2] = getComputerSymbol()
+                lastMove = Pair(0,2)
+                return true
+            } // End else if
+            else if (board[0][2] == board[2][2] && board[2][2] == getComputerSymbol() && board[1][2] == BLANK)
+            {
+                board[1][2] = getComputerSymbol()
+                lastMove = Pair(1,2)
+                return true
+            } // End else if
+            else if (board[2][0] == board[1][1] && board[2][0] == getComputerSymbol() && board[0][2] == BLANK)
+            {
+                board[0][2] = getComputerSymbol()
+                lastMove = Pair(0,2)
+                return true
+            } // End else if
+            else if (board[0][2] == board[1][1] && board[1][1] == getComputerSymbol() && board[2][0] == BLANK)
+            {
+                board[2][0] = getComputerSymbol()
+                lastMove = Pair(2,0)
+                return true
+            } // End else if
+            else if (board[0][0] == board[1][1] && board[0][0] == getComputerSymbol() && board[2][2] == BLANK)
+            {
+                board[2][2] = getComputerSymbol()
+                lastMove = Pair(2,2)
+                return true
+            } // End else if
+            else if (board[1][1] == board[2][2] && board[1][1] == getComputerSymbol() && board[0][0] == BLANK)
+            {
+                board[0][0] = getComputerSymbol()
+                lastMove = Pair(0,0)
+                return true
+            } // End else if
+            else if (board[1][1] == board[1][2] && board[1][1] == getComputerSymbol() && board[1][0] == BLANK)
+            {
+                board[1][0] = getComputerSymbol()
+                lastMove = Pair(1,0)
+                return true
+            } // End else if
+            else if (board[1][0] == board[1][1] && board[1][1] == getComputerSymbol() && board[1][2] == BLANK)
+            {
+                board[1][2] = getComputerSymbol()
+                lastMove = Pair(1,2)
+                return true
+            } // End else if
+            else if (board[0][1] == board[1][1] && board[1][1] == getComputerSymbol() && board[2][1] == BLANK)
+            {
+                board[1][2] = getComputerSymbol()
+                lastMove = Pair(1,2)
+                return true
+            } // End else if
+            else if (board[1][0] == board[1][1] && board[1][1] == getComputerSymbol() && board[1][2] == BLANK)
+            {
+                board[1][2] = getComputerSymbol()
+                lastMove = Pair(1,2)
+                return true
+            } // End else if
+
+
+            // 3.)If no win is possible, make a defensive choice if applicable.
+            else if (board[0][0] == board[0][1] && board[0][1] == playerSymbol && board[0][2] == BLANK)
+            {
+                board[0][2] = getComputerSymbol()
+                lastMove = Pair(0,2)
+                return true
+            } // End else if
+            else if (board[0][0] == board[0][2] && board[0][0] == playerSymbol && board[0][1] == BLANK)
+            {
+                board[0][1] = getComputerSymbol()
+                lastMove = Pair(0,1)
+                return true
+            } // End else if
+            else if (board[0][1] == board[0][2] && board[0][1] == playerSymbol && board[0][0] == BLANK)
+            {
+                board[0][0] = getComputerSymbol()
+                lastMove = Pair(0,0)
+                return true
+            } // End else if
+            else if (board[1][0] == board[1][1] && board[1][0] == playerSymbol && board[1][2] == BLANK)
+            {
+                board[1][2] = getComputerSymbol()
+                lastMove = Pair(1,2)
+                return true
+            } // End else if
+            else if (board[1][1] == board[1][2] && board[1][1] == playerSymbol && board[1][0] == BLANK)
+            {
+                board[1][0] = getComputerSymbol()
+                lastMove = Pair(1,0)
+                return true
+            } // End else if
+            else if (board[1][0] == board[1][2] && board[1][0] == playerSymbol && board[1][1] == BLANK)
+            {
+                board[1][1] = getComputerSymbol()
+                lastMove = Pair(1,1)
+                return true
+            } // End else if
+            else if (board[2][0] == board[2][1] && board[2][1] == playerSymbol && board[2][2] == BLANK)
+            {
+                board[2][2] = getComputerSymbol()
+                lastMove = Pair(2,2)
+                return true
+            } // End else if
+            else if (board[2][1] == board[2][2] && board[2][1] == playerSymbol && board[2][0] == BLANK)
+            {
+                board[2][0] = getComputerSymbol()
+                lastMove = Pair(2,0)
+                return true
+            } // End else if
+            else if (board[2][0] == board[2][2] && board[2][2] == playerSymbol && board[2][1] == BLANK)
+            {
+                board[2][1] = getComputerSymbol()
+                lastMove = Pair(2,1)
+                return true
+            } // End else if
+            else if (board[0][0] == board[1][0] && board[1][0] == playerSymbol && board[2][0] == BLANK)
+            {
+                board[2][0] = getComputerSymbol()
+                lastMove = Pair(2,0)
+                return true
+            } // End else if
+            else if (board[1][0] == board[2][0] && board[2][0] == playerSymbol && board[0][0] == BLANK)
+            {
+                board[0][0] = getComputerSymbol()
+                lastMove = Pair(0,0)
+                return true
+            } // End else if
+            else if (board[0][0] == board[2][0] && board[2][0] == playerSymbol && board[1][0] == BLANK)
+            {
+                board[1][0] = getComputerSymbol()
+                lastMove = Pair(1,0)
+                return true
+            } // End else if
+            else if (board[0][1] == board[1][1] && board[1][1] == playerSymbol && board[2][1] == BLANK)
+            {
+                board[2][1] = getComputerSymbol()
+                lastMove = Pair(2,1)
+                return true
+            } // End else if
+            else if (board[1][1] == board[2][1] && board[2][1] == playerSymbol && board[0][1] == BLANK)
+            {
+                board[0][1] = getComputerSymbol()
+                lastMove = Pair(0,1)
+                return true
+            } // End else if
+            else if (board[0][2] == board[1][2] && board[1][2] == playerSymbol && board[2][2] == BLANK)
+            {
+                board[2][2] = getComputerSymbol()
+                lastMove = Pair(2,2)
+                return true
+            } // End else if
+            else if (board[1][2] == board[2][2] && board[2][2] == playerSymbol && board[0][2] == BLANK)
+            {
+                board[0][2] = getComputerSymbol()
+                lastMove = Pair(0,2)
+                return true
+            } // End else if
+            else if (board[0][2] == board[2][2] && board[2][2] == playerSymbol && board[1][2] == BLANK)
+            {
+                board[1][2] = getComputerSymbol()
+                lastMove = Pair(1,2)
+                return true
+            } // End else if
+            else if (board[2][0] == board[1][1] && board[2][0] == playerSymbol && board[0][2] == BLANK)
+            {
+                board[0][2] = getComputerSymbol()
+                lastMove = Pair(0,2)
+                return true
+            } // End else if
+            else if (board[0][2] == board[1][1] && board[1][1] == playerSymbol && board[2][0] == BLANK)
+            {
+                board[2][0] = getComputerSymbol()
+                lastMove = Pair(2,0)
+                return true
+            } // End else if
+            else if (board[0][0] == board[1][1] && board[0][0] == playerSymbol && board[2][2] == BLANK)
+            {
+                board[2][2] = getComputerSymbol()
+                lastMove = Pair(2,2)
+                return true
+            } // End else if
+            else if (board[1][1] == board[2][2] && board[1][1] == playerSymbol && board[0][0] == BLANK)
+            {
+                board[0][0] = getComputerSymbol()
+                lastMove = Pair(0,0)
+                return true
+            } // End else if
+
+            // End new strategy
+
+            // 4.) Make a random move (professor provided)
+            while (true)
+            {
                 val i: Int = Random.nextInt(BOARD_SIZE)
                 val j: Int = Random.nextInt(BOARD_SIZE)
-                if (board[i][j] === BLANK) {
+                if (board[i][j] === BLANK)
+                {
                     board[i][j] = getComputerSymbol()
                     lastMove = Pair(i, j)
                     return true
                 }
-            }
-        }
+            } // End while
+        } // End if
         return false
-    }
+    } // End computerPlay
 
     /**
      * Return a string representation of the board

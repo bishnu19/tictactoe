@@ -3,7 +3,7 @@ package com.msudenver.tictactoe
 /*
  * CS3013 - Mobile App Dev. - Summer 2022
  * Instructor: Thyago Mota
- * Student(s):
+ * Student(s): Adam Prieto and Bishnu Bhusal
  * Description: App 01 - MainActivity class
  */
 
@@ -22,20 +22,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO (suggested): get a reference to the "play" button and use it to set its "onClick" listener to MainActivity
+        // TODOd (suggested): get a reference to the "play" button and use it to set its "onClick" listener to MainActivity
         val playButton: Button = findViewById(R.id.playButton)
         playButton.setOnClickListener {
-            //intent = Intent(this,TicTacToeActivity::class.java)
-            //startActivity(intent)
+
             onClick(playButton)
         }
 
     }
 
-    // TODO (suggested): get the player's name, symbol, and the first move choice; pass info to the TicTacToe activity
+    // TODOd (suggested): get the player's name, symbol, and the first move choice; pass info to the TicTacToe activity
     override fun onClick(p0: View?) {
-        val editText: EditText = findViewById(R.id.playerName)
-        val playerName = editText.text.toString()
+        val playerName = (findViewById<EditText>(R.id.playerName)).text.toString()
         val rgChoices: RadioGroup = findViewById(R.id.radioGroup)
 
         // Get the clicked radio button instance
@@ -44,9 +42,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val response: RadioGroup = findViewById(R.id.selectedResponse)
         val selectedResponse: RadioButton = findViewById(response.checkedRadioButtonId)
 
-        val btnNoughts: RadioButton = findViewById(R.id.btnNoughts)
-        val btnCrosses: RadioButton = findViewById(R.id.btnCrosses)
-        val symbol = if (checkedSymbol == btnNoughts) {
+        val symbol = if (checkedSymbol == (findViewById<RadioButton>(R.id.btnNoughts))) {
             'O'
         } else {
             'X'
@@ -54,7 +50,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val yesButton: RadioButton = findViewById(R.id.btnYes)
         //val noButton: RadioButton = findViewById(R.id.btnNo)
-        val firstMove =  selectedResponse == yesButton
+        val firstMove =  (selectedResponse == yesButton)
 
 
         intent = Intent(this, TicTacToeActivity::class.java)

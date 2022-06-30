@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/whole_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
+
     <TextView
+        android:id="@+id/txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:id="@+id/txtView"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
 
     <TableRow
         android:layout_width="match_parent"
@@ -17,20 +19,28 @@
         android:layout_marginBottom="10dp">
 
         <Button
-            android:layout_height="120dp"
+            android:id="@+id/btnOne"
             android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginLeft="10dp"
-            android:tag="@string/app_name"/>
+            android:tag="00"
+            android:text="" />
+
         <Button
+            android:id="@+id/btnTwo"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/btnTwo"/>
+            android:tag="01"
+            android:text="" />
+
         <Button
-            android:layout_height="120dp"
+            android:id="@+id/btnThree"
             android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/btnThree"/>
+            android:tag="02"
+            android:text="" />
 
     </TableRow>
 
@@ -40,45 +50,60 @@
         android:layout_marginBottom="10dp">
 
         <Button
-            android:layout_height="120dp"
+            android:id="@+id/btnFour"
             android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/btnFour"/>
+            android:tag="10"
+            android:text="" />
+
         <Button
+            android:id="@+id/btnFive"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/btnFive"/>
+            android:tag="11"
+            android:text="" />
+
         <Button
-            android:layout_height="120dp"
+            android:id="@+id/btnSix"
             android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/btnSix"/>
+            android:tag="12"
+            android:text="" />
 
     </TableRow>
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <Button
-            android:layout_height="120dp"
+            android:id="@+id/btnSeven"
             android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/btnSeven"/>
+            android:tag="20"
+            android:text="" />
+
         <Button
+            android:id="@+id/btnEight"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/btnEight"/>
+            android:tag="21"
+            android:text="" />
+
         <Button
-            android:layout_height="120dp"
+            android:id="@+id/btnNine"
             android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/btnNine"/>
+            android:tag="22"
+            android:text="" />
 
     </TableRow>
-
 
 
 </TableLayout>
