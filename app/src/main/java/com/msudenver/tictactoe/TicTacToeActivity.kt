@@ -8,13 +8,10 @@ package com.msudenver.tictactoe
  */
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.forEachIndexed
 import com.google.android.material.textfield.*
 
 class TicTacToeActivity : AppCompatActivity(), View.OnClickListener
@@ -43,23 +40,13 @@ class TicTacToeActivity : AppCompatActivity(), View.OnClickListener
         firstMove = intent.getBooleanExtra("firstMove", true)
         ticTacToe = TicTacToe(name!!, symbol!!)
 
-        // To be tested
-        if (!firstMove!!)
-        {
-            ticTacToe?.computerPlay()
-            val newButton = ticTacToe?.lastMove
-
-            Toast.makeText(this, "Computer Move:\n" + newButton.toString(), Toast.LENGTH_LONG).show()
-
-
-        }
 
 
         // TODOd (suggested): get a reference to the TextView "player info" area; update the TextView with the player's name and symbol
         val textView: TextView = findViewById(R.id.txtView)
         textView.text = "Player $name is using the symbol $symbol"
 
-        /* TODO (suggested): using a loop and button tags, update their texts and "onClick"
+        /* TODOd (suggested): using a loop and button tags, update their texts and "onClick"
             listeners to TicTacToeActivity; remember to disable the button if it corresponds to a
              computer's first move
          */
@@ -122,24 +109,17 @@ class TicTacToeActivity : AppCompatActivity(), View.OnClickListener
 
         }
 
+        // To be tested
+        if (!firstMove!!)
+        {
+            ticTacToe?.computerPlay()
+            val newButton = ticTacToe?.lastMove
 
-       // val wholeLayout: LinearLayout = findViewById(R.id.whole_layout)
-       // wholeLayout.forEachIndexed {_, innerLayout ->
-       //     val innerLayoutActual: TableRow = innerLayout as TableRow
-       //     innerLayoutActual.forEachIndexed {_, button ->
-       //
-       //         val buttonActual: Button = button as Button
-       //
-       //
-       //         buttonActual.setOnClickListener{
-       //             onClick(buttonActual)
-       //         } // End setOnClickListener
-       //
-       //     } // End innerLayout
-       // } // End wholeLayout
+            centerButton.text = ticTacToe?.getComputerSymbol().toString()
+            centerButton.isEnabled = false
+        }
 
-
-
+        //ticTacToe?.computerPlay()
 
 
     } // End onCreate
@@ -166,12 +146,10 @@ class TicTacToeActivity : AppCompatActivity(), View.OnClickListener
         else
         {
             Toast.makeText(this, "Tie!!!", Toast.LENGTH_LONG).show()
-        }
+        } // End else
+    } // End showResults
 
-
-    }
-
-    /* TODO (suggested): cast the given view as a Button; disable the button so you don't forget;
+    /* TODOd (suggested): cast the given view as a Button; disable the button so you don't forget;
          get the button's tag and use it to infer the player's move coordinates; make the move and
           update the button's text with the player's symbol; if the game is over, show results;
            otherwise, have the computer play; use TitTacToe's last move and "findViewWithTag" to get
@@ -190,6 +168,8 @@ class TicTacToeActivity : AppCompatActivity(), View.OnClickListener
             button.text = symbol.toString()
             ticTacToe?.playerPlay(button.tag.toString()[0].digitToInt(),
                                   button.tag.toString()[1].digitToInt())
+
+            println(ticTacToe?.toString())
         }
 
         button?.isEnabled = false
@@ -200,10 +180,33 @@ class TicTacToeActivity : AppCompatActivity(), View.OnClickListener
         }
         else
         {
-
+            makeComputerMove()
         }
     } // End onClick
 
+
+    private fun makeComputerMove()
+    {
+
+        val wholeLayout: TableLayout = findViewById(R.id.whole_layout)
+        ticTacToe?.computerPlay()
+        val button = wholeLayout.findViewWithTag<Button>("${ticTacToe?.lastMove?.first}${ticTacToe?.lastMove?.second}")
+
+        button.text=
+            ticTacToe?.lastMove?.first?.let {
+                ticTacToe?.lastMove?.second?.let { it1 ->
+                    ticTacToe?.getSymbolAt(it, it1)
+                        .toString()
+                }
+            }
+        button.isEnabled = false
+
+        if (ticTacToe?.isGameOver()!!)
+        {
+            showResults()
+            return
+        }
+    }
 
     // TODO: save the TicTacToe object using the outState Bundle
     override fun onSaveInstanceState(outState: Bundle)
