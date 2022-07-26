@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.textfield.*
 
 class TicTacToeActivity : AppCompatActivity(), View.OnClickListener
 {
@@ -113,19 +112,15 @@ class TicTacToeActivity : AppCompatActivity(), View.OnClickListener
         if (!firstMove!!)
         {
             ticTacToe?.computerPlay()
-            val newButton = ticTacToe?.lastMove
+            ticTacToe?.lastMove
 
             centerButton.text = ticTacToe?.getComputerSymbol().toString()
             centerButton.isEnabled = false
-        }
-
-        //ticTacToe?.computerPlay()
-
-
+        } // End if
     } // End onCreate
 
     // TODOd (suggested): display a Toast with a text based on the game's result
-    fun showResults()
+    private fun showResults()
     {
         if (ticTacToe?.getWinner() == ticTacToe?.playerSymbol)
         {

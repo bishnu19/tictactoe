@@ -58,28 +58,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         intent.putExtra("playerSymbol",symbol)
         intent.putExtra("firstMove", firstMove)
         startActivity(intent)
-
-
-        /*
-        val btnNoughts: RadioButton = findViewById(R.id.btnNoughts)
-        val btnCrosses: RadioButton = findViewById(R.id.btnCrosses)
-        // reference to the radio Group
-        val yesButton: RadioButton = findViewById(R.id.btnYes)
-        val noButton: RadioButton = findViewById(R.id.btnNo)
-        //val playerName = editView.text.toString()
-        val symbol = if (checkedSymbol == btnNoughts) {
-            btnNoughts
-        } else {
-            btnCrosses
-        }
-
-        val firstMove = if (selectedResponse == yesButton) {
-            yesButton.toString()
-        } else {
-            noButton.toString()
-        }
-
-         */
+        
 
     }
 

@@ -33,16 +33,12 @@ class TicTacToe(playerName: String, playerSymbol: Char = NOUGHTS): Serializable 
     // TODOd: define a "board" member variable (private) as a 2D char array of BOARD_SIZE x BOARD_SIZE
     // initialize it with BLANKs
     var board = Array(
-        BOARD_SIZE,
-        { Array(
-            BOARD_SIZE,
-            {
-                BLANK
-            }
-        )
-        }
-    )
-
+        BOARD_SIZE) {
+        Array(BOARD_SIZE, {
+            BLANK
+        })
+    }
+    
     /**
      * If there is a row with the same symbol, return the symbol; BLANK otherwise
      * @return symbol
@@ -126,8 +122,7 @@ class TicTacToe(playerName: String, playerSymbol: Char = NOUGHTS): Serializable 
         winner = colWin()
         if (winner != BLANK)
             return winner
-        winner = diagonalWin()
-        return winner
+        return diagonalWin()
     }
 
     /**
@@ -205,155 +200,154 @@ class TicTacToe(playerName: String, playerSymbol: Char = NOUGHTS): Serializable 
             else if (board[0][0] == board[0][1] && board[0][1] == getComputerSymbol() && board[0][2] == BLANK)
             {
                 board[0][2] = getComputerSymbol()
-                lastMove = Pair(0,2)
+                lastMove = Pair(0, 2)
                 return true
             } // End else if
             else if (board[0][0] == board[0][2] && board[0][0] == getComputerSymbol() && board[0][1] == BLANK)
             {
                 board[0][1] = getComputerSymbol()
-                lastMove = Pair(0,1)
+                lastMove = Pair(0, 1)
                 return true
             } // End else if
             else if (board[0][1] == board[0][2] && board[0][1] == getComputerSymbol() && board[0][0] == BLANK)
             {
                 board[0][0] = getComputerSymbol()
-                lastMove = Pair(0,0)
+                lastMove = Pair(0, 0)
                 return true
             } // End else if
             else if (board[1][0] == board[1][1] && board[1][0] == getComputerSymbol() && board[1][2] == BLANK)
             {
                 board[1][2] = getComputerSymbol()
-                lastMove = Pair(1,2)
+                lastMove = Pair(1, 2)
                 return true
             } // End else if
             else if (board[1][1] == board[1][2] && board[1][1] == getComputerSymbol() && board[1][0] == BLANK)
             {
                 board[1][0] = getComputerSymbol()
-                lastMove = Pair(1,0)
+                lastMove = Pair(1, 0)
                 return true
             } // End else if
             else if (board[1][0] == board[1][2] && board[1][0] == getComputerSymbol() && board[1][1] == BLANK)
             {
                 board[1][1] = getComputerSymbol()
-                lastMove = Pair(1,1)
+                lastMove = Pair(1, 1)
                 return true
             } // End else if
             else if (board[2][0] == board[2][1] && board[2][1] == getComputerSymbol() && board[2][2] == BLANK)
             {
                 board[2][2] = getComputerSymbol()
-                lastMove = Pair(2,2)
+                lastMove = Pair(2, 2)
                 return true
             } // End else if
             else if (board[2][1] == board[2][2] && board[2][1] == getComputerSymbol() && board[2][0] == BLANK)
             {
                 board[2][0] = getComputerSymbol()
-                lastMove = Pair(2,0)
+                lastMove = Pair(2, 0)
                 return true
             } // End else if
             else if (board[2][0] == board[2][2] && board[2][2] == getComputerSymbol() && board[2][1] == BLANK)
             {
                 board[2][1] = getComputerSymbol()
-                lastMove = Pair(2,1)
+                lastMove = Pair(2, 1)
                 return true
             } // End else if
             else if (board[0][0] == board[1][0] && board[1][0] == getComputerSymbol() && board[2][0] == BLANK)
             {
                 board[2][0] = getComputerSymbol()
-                lastMove = Pair(2,0)
+                lastMove = Pair(2, 0)
                 return true
             } // End else if
             else if (board[1][0] == board[2][0] && board[2][0] == getComputerSymbol() && board[0][0] == BLANK)
             {
                 board[0][0] = getComputerSymbol()
-                lastMove = Pair(0,0)
+                lastMove = Pair(0, 0)
                 return true
             } // End else if
             else if (board[0][0] == board[2][0] && board[2][0] == getComputerSymbol() && board[1][0] == BLANK)
             {
                 board[1][0] = getComputerSymbol()
-                lastMove = Pair(1,0)
+                lastMove = Pair(1, 0)
                 return true
             } // End else if
             else if (board[0][1] == board[1][1] && board[1][1] == getComputerSymbol() && board[2][1] == BLANK)
             {
                 board[2][1] = getComputerSymbol()
-                lastMove = Pair(2,1)
+                lastMove = Pair(2, 1)
                 return true
             } // End else if
             else if (board[1][1] == board[2][1] && board[2][1] == getComputerSymbol() && board[0][1] == BLANK)
             {
                 board[0][1] = getComputerSymbol()
-                lastMove = Pair(0,1)
+                lastMove = Pair(0, 1)
                 return true
             } // End else if
             else if (board[0][2] == board[1][2] && board[1][2] == getComputerSymbol() && board[2][2] == BLANK)
             {
                 board[2][2] = getComputerSymbol()
-                lastMove = Pair(2,2)
+                lastMove = Pair(2, 2)
                 return true
             } // End else if
             else if (board[1][2] == board[2][2] && board[2][2] == getComputerSymbol() && board[0][2] == BLANK)
             {
                 board[0][2] = getComputerSymbol()
-                lastMove = Pair(0,2)
+                lastMove = Pair(0, 2)
                 return true
             } // End else if
             else if (board[0][2] == board[2][2] && board[2][2] == getComputerSymbol() && board[1][2] == BLANK)
             {
                 board[1][2] = getComputerSymbol()
-                lastMove = Pair(1,2)
+                lastMove = Pair(1, 2)
                 return true
             } // End else if
             else if (board[2][0] == board[1][1] && board[2][0] == getComputerSymbol() && board[0][2] == BLANK)
             {
                 board[0][2] = getComputerSymbol()
-                lastMove = Pair(0,2)
+                lastMove = Pair(0, 2)
                 return true
             } // End else if
             else if (board[0][2] == board[1][1] && board[1][1] == getComputerSymbol() && board[2][0] == BLANK)
             {
                 board[2][0] = getComputerSymbol()
-                lastMove = Pair(2,0)
+                lastMove = Pair(2, 0)
                 return true
             } // End else if
             else if (board[0][0] == board[1][1] && board[0][0] == getComputerSymbol() && board[2][2] == BLANK)
             {
                 board[2][2] = getComputerSymbol()
-                lastMove = Pair(2,2)
+                lastMove = Pair(2, 2)
                 return true
             } // End else if
             else if (board[1][1] == board[2][2] && board[1][1] == getComputerSymbol() && board[0][0] == BLANK)
             {
                 board[0][0] = getComputerSymbol()
-                lastMove = Pair(0,0)
+                lastMove = Pair(0, 0)
                 return true
             } // End else if
             else if (board[1][1] == board[1][2] && board[1][1] == getComputerSymbol() && board[1][0] == BLANK)
             {
                 board[1][0] = getComputerSymbol()
-                lastMove = Pair(1,0)
+                lastMove = Pair(1, 0)
                 return true
             } // End else if
             else if (board[1][0] == board[1][1] && board[1][1] == getComputerSymbol() && board[1][2] == BLANK)
             {
                 board[1][2] = getComputerSymbol()
-                lastMove = Pair(1,2)
+                lastMove = Pair(1, 2)
                 return true
             } // End else if
             else if (board[0][1] == board[1][1] && board[1][1] == getComputerSymbol() && board[2][1] == BLANK)
             {
                 board[1][2] = getComputerSymbol()
-                lastMove = Pair(1,2)
+                lastMove = Pair(1, 2)
                 return true
             } // End else if
             else if (board[1][0] == board[1][1] && board[1][1] == getComputerSymbol() && board[1][2] == BLANK)
             {
                 board[1][2] = getComputerSymbol()
-                lastMove = Pair(1,2)
+                lastMove = Pair(1, 2)
                 return true
             } // End else if
-
-
+            
             // 3.)If no win is possible, make a defensive choice if applicable.
             else if (board[0][0] == board[0][1] && board[0][1] == playerSymbol && board[0][2] == BLANK)
             {
@@ -507,14 +501,12 @@ class TicTacToe(playerName: String, playerSymbol: Char = NOUGHTS): Serializable 
         var s = ""
         for (i in 0 until BOARD_SIZE) {
             for (j in 0 until BOARD_SIZE) {
-                if (board[i][j] == BLANK)
-                    s += " - "
-                else
-                    s += " " + board[i][j] + " "
+                s += if (board[i][j] == BLANK) " - "
+                else " " + board[i][j] + " "
                 s += "\t"
             }
             s += "\n"
         }
         return s
     }
-}
+} // End TicTacToe class
